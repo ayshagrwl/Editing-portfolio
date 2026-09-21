@@ -1,0 +1,6 @@
+{
+  "name": "Cinematic Video Editor Portfolio",
+  "description": "Professional video editor portfolio showcasing long-form and short-form video editing projects, editing breakdowns, software expertise, and booking inquiries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
