@@ -1,6 +1,6 @@
 import React from 'react';
 import { EditorProfile, VideoProject } from '../types';
-import { Film, Video, ArrowDown, Eye, TrendingUp, Award, Play } from 'lucide-react';
+import { Film, Video, Eye, TrendingUp, Award, Play, Sparkles, ArrowRight } from 'lucide-react';
 
 interface HeroProps {
   profile: EditorProfile;
@@ -9,172 +9,159 @@ interface HeroProps {
   onOpenCustomizer: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ profile, longForm, shortForm, onOpenCustomizer }) => {
+export const Hero: React.FC<HeroProps> = ({ profile, longForm, shortForm }) => {
   return (
-    <section id="hero" className="relative pt-32 pb-20 px-4 sm:px-6 overflow-hidden border-b border-zinc-800/60">
-      {/* Subtle background ambient glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-amber-500/10 via-rose-500/5 to-transparent blur-[120px] pointer-events-none -z-10" />
-      
-      <div className="max-w-6xl mx-auto">
-        {/* Top Tagline & Status */}
-        <div className="flex flex-wrap items-center gap-3 mb-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/90 border border-zinc-700/80 text-xs font-mono text-zinc-300 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
-            <span>VIDEO EDITOR & NARRATIVE ARCHITECT</span>
+    <section id="hero" className="relative pt-28 pb-16 px-4 sm:px-6 overflow-hidden">
+      {/* Delicate Light Gradient Ambient Mesh Background */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[460px] bg-gradient-to-b from-indigo-100/60 via-purple-50/40 to-transparent blur-[110px] pointer-events-none -z-10" />
+      <div className="absolute top-16 right-10 w-96 h-96 bg-sky-100/70 rounded-full blur-[100px] pointer-events-none -z-10" />
+      <div className="absolute top-32 left-10 w-96 h-96 bg-rose-100/60 rounded-full blur-[100px] pointer-events-none -z-10" />
+
+      <div className="max-w-5xl mx-auto">
+        {/* Minimalist Editorial Kicker (Unboxed metadata, no static pills) */}
+        <div className="flex flex-wrap items-center gap-2.5 text-xs text-slate-500 font-mono mb-4">
+          <span className="font-semibold text-slate-700 tracking-wider uppercase">
+            VIDEO EDITOR
+          </span>
+          <span aria-hidden="true" className="text-slate-300">·</span>
+          <span>NARRATIVE & RETENTION</span>
+          <span aria-hidden="true" className="text-slate-300">·</span>
+          <span className="text-emerald-600 font-medium">{profile.availabilityText}</span>
+        </div>
+
+        {/* Minimalist High-Impact Headline with Light Gradient Accent */}
+        <div className="mb-8">
+          <h1 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-slate-900 tracking-tight leading-[1.1] mb-4">
+            Pacing, sound, and story that{' '}
+            <span className="bg-gradient-to-r from-violet-600 via-indigo-600 to-sky-600 bg-clip-text text-transparent">
+              hook viewers
+            </span>{' '}
+            and hold retention.
+          </h1>
+          <p className="text-base sm:text-lg text-slate-600 max-w-2xl font-normal leading-relaxed">
+            {profile.bio}
+          </p>
+        </div>
+
+        {/* 4 Minimalist Stat Cards for Quick Scan */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+          <div className="p-4 rounded-xl bg-white/80 backdrop-blur-sm border border-slate-200/80 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:border-slate-300 transition-all">
+            <div className="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5">
+              <Eye className="w-3.5 h-3.5 text-indigo-500" />
+              <span>TOTAL VIEWS</span>
+            </div>
+            <div className="font-display font-bold text-2xl text-slate-900">
+              {profile.viewsGenerated}
+            </div>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-xs font-medium text-emerald-300">
-            <span>{profile.availabilityText}</span>
+          <div className="p-4 rounded-xl bg-white/80 backdrop-blur-sm border border-slate-200/80 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:border-slate-300 transition-all">
+            <div className="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5">
+              <Film className="w-3.5 h-3.5 text-violet-500" />
+              <span>DELIVERED</span>
+            </div>
+            <div className="font-display font-bold text-2xl text-slate-900">
+              {profile.videosEdited}
+            </div>
+          </div>
+
+          <div className="p-4 rounded-xl bg-white/80 backdrop-blur-sm border border-slate-200/80 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:border-slate-300 transition-all">
+            <div className="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5">
+              <TrendingUp className="w-3.5 h-3.5 text-emerald-600" />
+              <span>RETENTION LIFT</span>
+            </div>
+            <div className="font-display font-bold text-2xl text-emerald-600">
+              {profile.avgRetentionBoost}
+            </div>
+          </div>
+
+          <div className="p-4 rounded-xl bg-white/80 backdrop-blur-sm border border-slate-200/80 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:border-slate-300 transition-all">
+            <div className="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5">
+              <Award className="w-3.5 h-3.5 text-amber-500" />
+              <span>EXPERIENCE</span>
+            </div>
+            <div className="font-display font-bold text-2xl text-slate-900">
+              {profile.yearsExperience}
+            </div>
           </div>
         </div>
 
-        {/* Main Headline */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-12">
-          <div className="lg:col-span-8">
-            <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-[1.1] mb-6">
-              Editing that commands attention, keeps eyes glued, and{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-rose-400">
-                skyrockets retention.
-              </span>
-            </h1>
-            <p className="text-base sm:text-lg text-zinc-400 max-w-2xl leading-relaxed">
-              {profile.bio}
-            </p>
-          </div>
-
-          {/* Quick Stats Grid */}
-          <div className="lg:col-span-4 grid grid-cols-2 gap-3 bg-zinc-900/70 p-4 rounded-2xl border border-zinc-800">
-            <div className="p-3 rounded-xl bg-black/40 border border-zinc-800/80">
-              <div className="flex items-center gap-1.5 text-zinc-400 text-xs font-mono mb-1">
-                <Eye className="w-3.5 h-3.5 text-amber-400" />
-                <span>TOTAL VIEWS</span>
-              </div>
-              <div className="font-display font-bold text-2xl text-white">
-                {profile.viewsGenerated}
-              </div>
-            </div>
-
-            <div className="p-3 rounded-xl bg-black/40 border border-zinc-800/80">
-              <div className="flex items-center gap-1.5 text-zinc-400 text-xs font-mono mb-1">
-                <Film className="w-3.5 h-3.5 text-rose-400" />
-                <span>DELIVERED</span>
-              </div>
-              <div className="font-display font-bold text-2xl text-white">
-                {profile.videosEdited}
-              </div>
-            </div>
-
-            <div className="p-3 rounded-xl bg-black/40 border border-zinc-800/80">
-              <div className="flex items-center gap-1.5 text-zinc-400 text-xs font-mono mb-1">
-                <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
-                <span>RETENTION</span>
-              </div>
-              <div className="font-display font-bold text-2xl text-emerald-400">
-                {profile.avgRetentionBoost}
-              </div>
-            </div>
-
-            <div className="p-3 rounded-xl bg-black/40 border border-zinc-800/80">
-              <div className="flex items-center gap-1.5 text-zinc-400 text-xs font-mono mb-1">
-                <Award className="w-3.5 h-3.5 text-sky-400" />
-                <span>EXPERIENCE</span>
-              </div>
-              <div className="font-display font-bold text-2xl text-white">
-                {profile.yearsExperience}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* The Two Portfolios Cards Teaser */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-4">
-          {/* Card 1: Long-Form Highlight */}
+        {/* 2 Quick Review Work Launchers */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Card 1: Long-Form Launch */}
           <a
             href="#long-form"
-            className="group relative rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900/60 hover:border-amber-500/50 transition-all duration-300 p-5 flex flex-col justify-between"
+            className="group relative rounded-2xl bg-white border border-slate-200/80 p-5 shadow-[0_4px_16px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_24px_-6px_rgba(99,102,241,0.12)] hover:border-indigo-200 transition-all flex flex-col justify-between"
           >
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <span className="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                  <Film className="w-4 h-4" />
+            {/* Subtle top gradient accent line */}
+            <div className="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full opacity-60 group-hover:opacity-100 transition-opacity" />
+
+            <div>
+              <div className="flex items-center justify-between text-xs text-slate-500 mb-2">
+                <span className="font-mono font-medium text-indigo-600 flex items-center gap-1.5">
+                  <Film className="w-3.5 h-3.5" />
+                  01. Long-Form Documentary
                 </span>
-                <span className="text-xs font-mono uppercase tracking-wider text-amber-300 font-semibold">
-                  Featured Long-Form
+                <span className="font-mono text-slate-400">
+                  {longForm.duration} · 16:9
                 </span>
               </div>
-              <span className="text-xs font-mono text-zinc-400 px-2.5 py-1 rounded-md bg-zinc-800">
-                {longForm.duration} • 16:9
-              </span>
-            </div>
 
-            <div className="mb-4">
-              <h3 className="font-display font-bold text-xl text-white group-hover:text-amber-300 transition-colors mb-2">
+              <h3 className="font-display font-bold text-lg text-slate-900 group-hover:text-indigo-600 transition-colors mb-1">
                 {longForm.title}
               </h3>
-              <p className="text-sm text-zinc-400 line-clamp-2">
-                {longForm.subtitle} — {longForm.client}
+              <p className="text-xs text-slate-500 line-clamp-1 mb-4">
+                {longForm.client}
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-3 border-t border-zinc-800/80 text-xs">
-              <span className="text-zinc-500 font-mono">
-                {longForm.stats.totalCuts} cuts • {longForm.stats.averageCutTime} pacing
+            <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
+              <span className="font-mono text-slate-600">
+                {longForm.stats.views} <span className="text-slate-300">·</span> {longForm.stats.retentionRate}
               </span>
-              <span className="inline-flex items-center gap-1 text-amber-400 font-semibold group-hover:translate-x-1 transition-transform">
-                <span>View Breakdown</span>
+              <span className="inline-flex items-center gap-1 text-indigo-600 font-semibold group-hover:translate-x-0.5 transition-transform">
+                <span>View Cut</span>
                 <Play className="w-3 h-3 fill-current" />
               </span>
             </div>
           </a>
 
-          {/* Card 2: Short-Form Highlight */}
+          {/* Card 2: Short-Form Launch */}
           <a
             href="#short-form"
-            className="group relative rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900/60 hover:border-rose-500/50 transition-all duration-300 p-5 flex flex-col justify-between"
+            className="group relative rounded-2xl bg-white border border-slate-200/80 p-5 shadow-[0_4px_16px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_24px_-6px_rgba(236,72,153,0.12)] hover:border-pink-200 transition-all flex flex-col justify-between"
           >
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <span className="p-2 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
-                  <Video className="w-4 h-4" />
+            {/* Subtle top gradient accent line */}
+            <div className="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-pink-500 to-rose-500 rounded-full opacity-60 group-hover:opacity-100 transition-opacity" />
+
+            <div>
+              <div className="flex items-center justify-between text-xs text-slate-500 mb-2">
+                <span className="font-mono font-medium text-pink-600 flex items-center gap-1.5">
+                  <Video className="w-3.5 h-3.5" />
+                  02. Short-Form Viral Reel
                 </span>
-                <span className="text-xs font-mono uppercase tracking-wider text-rose-300 font-semibold">
-                  Featured Short-Form
+                <span className="font-mono text-slate-400">
+                  {shortForm.duration} · 9:16
                 </span>
               </div>
-              <span className="text-xs font-mono text-zinc-400 px-2.5 py-1 rounded-md bg-zinc-800">
-                {shortForm.duration} • 9:16 Reel
-              </span>
-            </div>
 
-            <div className="mb-4">
-              <h3 className="font-display font-bold text-xl text-white group-hover:text-rose-300 transition-colors mb-2">
+              <h3 className="font-display font-bold text-lg text-slate-900 group-hover:text-pink-600 transition-colors mb-1">
                 {shortForm.title}
               </h3>
-              <p className="text-sm text-zinc-400 line-clamp-2">
-                {shortForm.subtitle} — {shortForm.client}
+              <p className="text-xs text-slate-500 line-clamp-1 mb-4">
+                {shortForm.client}
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-3 border-t border-zinc-800/80 text-xs">
-              <span className="text-zinc-500 font-mono">
-                {shortForm.stats.completionRate} completion • {shortForm.stats.views}
+            <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
+              <span className="font-mono text-slate-600">
+                {shortForm.stats.views} <span className="text-slate-300">·</span> {shortForm.stats.completionRate}
               </span>
-              <span className="inline-flex items-center gap-1 text-rose-400 font-semibold group-hover:translate-x-1 transition-transform">
-                <span>View Short-Form</span>
+              <span className="inline-flex items-center gap-1 text-pink-600 font-semibold group-hover:translate-x-0.5 transition-transform">
+                <span>View Reel</span>
                 <Play className="w-3 h-3 fill-current" />
               </span>
             </div>
-          </a>
-        </div>
-
-        {/* Scroll down indicator */}
-        <div className="flex justify-center mt-12">
-          <a
-            href="#long-form"
-            className="flex items-center gap-2 text-xs font-mono text-zinc-500 hover:text-zinc-300 transition-colors py-2"
-          >
-            <span>SCROLL TO EXPLORE WORK</span>
-            <ArrowDown className="w-3.5 h-3.5 animate-bounce" />
           </a>
         </div>
       </div>

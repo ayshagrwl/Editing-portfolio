@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { EditorProfile, VideoProject } from './types';
 import { 
   initialEditorProfile, 
@@ -12,7 +12,6 @@ import { Hero } from './components/Hero';
 import { LongFormShowcase } from './components/LongFormShowcase';
 import { ShortFormShowcase } from './components/ShortFormShowcase';
 import { AboutAndSkills } from './components/AboutAndSkills';
-import { ContactSection } from './components/ContactSection';
 import { CustomizerModal } from './components/CustomizerModal';
 
 export default function App() {
@@ -80,7 +79,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#090b0e] text-zinc-100 selection:bg-amber-400 selection:text-black">
+    <div className="min-h-screen bg-[#f8f9fc] text-slate-900 selection:bg-violet-500 selection:text-white relative">
       {/* Navigation Bar */}
       <Navbar
         profile={profile}
@@ -113,12 +112,50 @@ export default function App() {
           skills={softwareSkills}
           workflow={workflowSteps}
         />
-
-        {/* Contact & Inquiries */}
-        <ContactSection
-          profile={profile}
-        />
       </main>
+
+      {/* Minimalist Footer without contact form */}
+      <footer className="py-10 px-4 sm:px-6 border-t border-slate-200/80 bg-white/70 backdrop-blur-md">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          <div className="flex items-center gap-3">
+            <span className="font-display font-bold text-slate-900 text-sm">
+              {profile.name}
+            </span>
+            <span className="text-slate-400 font-mono">
+              · {profile.role}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-6 text-slate-500">
+            <a
+              href={`mailto:${profile.email}`}
+              className="hover:text-indigo-600 transition-colors font-mono"
+            >
+              {profile.email}
+            </a>
+            {profile.socials?.twitter && (
+              <a
+                href={profile.socials.twitter}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-slate-900 transition-colors"
+              >
+                Twitter / X
+              </a>
+            )}
+            {profile.socials?.youtube && (
+              <a
+                href={profile.socials.youtube}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-slate-900 transition-colors"
+              >
+                YouTube
+              </a>
+            )}
+          </div>
+        </div>
+      </footer>
 
       {/* Customizer Drawer / Modal */}
       <CustomizerModal
@@ -133,4 +170,3 @@ export default function App() {
     </div>
   );
 }
-
